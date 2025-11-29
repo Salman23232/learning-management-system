@@ -1,0 +1,8 @@
+import dotenv from 'dotenv'
+dotenv.config()
+import { neon } from '@neondatabase/serverless'
+import { drizzle } from 'drizzle-orm/neon-http'
+
+const client = neon(process.env.DATABASE_URL!)
+export const db = drizzle(client)
+console.log('DATABASE_URL:', process.env.DATABASE_URL!)

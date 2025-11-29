@@ -1,10 +1,13 @@
 import type { Metadata } from 'next'
 import { ClerkProvider } from '@clerk/nextjs'
-import { Geist, Geist_Mono } from 'next/font/google'
+import { Geist, Geist_Mono, Playfair_Display } from 'next/font/google'
 import './globals.css'
+import { Provider } from './provider'
+import { UserCoursesProvider } from '@/context/UserCoursesContext'
+import { CourseProvider } from '@/context/useCourse'
 
-const geistSans = Geist({
-  variable: '--font-geist-sans',
+const geistSans = Playfair_Display({
+  variable: '--font-playfair_display',
   subsets: ['latin'],
 })
 
@@ -25,9 +28,13 @@ export default function RootLayout({
 }>) {
   return (
     <ClerkProvider>
-      <html lang="en">
+      <html lang="en" suppressHydrationWarning={true}>
         <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-          {children}
+          <Provider>
+            <UserCoursesProvider>
+              <CourseProvider>{children}</CourseProvider>
+            </UserCoursesProvider>
+          </Provider>
         </body>
       </html>
     </ClerkProvider>
