@@ -18,6 +18,7 @@ import {
   SidebarMenuItem,
 } from '@/components/ui/sidebar'
 import { Book, Compass, LayoutDashboard, GraduationCap, WalletCards, Plus } from 'lucide-react'
+import Logo from '@/components/Logo'
 
 const SidebarOptions = [
   { title: 'Overview', icon: LayoutDashboard, path: '/dashboard/overview', color: '#3B82F6' },
@@ -59,15 +60,7 @@ export function AppSidebar() {
           transition={{ duration: 0.3 }}
           className="flex items-center gap-3"
         >
-          <div className="w-10 h-10 bg-gradient-to-br from-blue-600 via-indigo-600 to-purple-700 rounded-xl flex items-center justify-center shadow-lg shadow-blue-500/30">
-            <GraduationCap className="w-6 h-6 text-white" />
-          </div>
-          <div>
-            <h1 className="text-lg font-bold text-[#010D3E] uppercase tracking-tighter">
-              Karigori
-            </h1>
-            <p className="text-xs text-[#010D3E]/60">Coding School</p>
-          </div>
+          <Logo />
         </motion.div>
       </SidebarHeader>
 

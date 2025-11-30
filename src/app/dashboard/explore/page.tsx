@@ -309,7 +309,7 @@ const ExplorePage = () => {
       setLoading(true)
       try {
         const res = await getCommunityCourses(user.primaryEmailAddress.emailAddress)
-        setCourses(res)
+        setCourses(res as Course[])
       } catch (err) {
         console.error(err)
       } finally {

@@ -1,5 +1,5 @@
 'use client'
-
+export const dynamic = 'force-dynamic'
 import { SignIn } from '@clerk/nextjs'
 import Image from 'next/image'
 import { motion } from 'framer-motion'

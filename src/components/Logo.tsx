@@ -1,12 +1,10 @@
-import { GraduationCap } from 'lucide-react'
-import React from 'react'
+import Image from 'next/image'
+import logo from '../../public/assets/image.png'
 
 const Logo = () => {
   return (
     <div className="flex gap-2">
-      <div className="w-12 h-12 bg-gradient-to-br from-blue-600 to-purple-600 rounded-xl flex items-center justify-center shadow-lg shadow-blue-500/20">
-        <GraduationCap className="w-7 h-7 text-white" />
-      </div>
+      <Image src={logo} alt="logo" width={40} height={40} />
       <div className="flex flex-col">
         <h1 className="text-lg font-bold text-black">
           Karigori <br />

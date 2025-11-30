@@ -266,7 +266,7 @@ const CourseList = () => {
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 lg:gap-8">
               {courses.map((course, index) => {
-                const courseData = course.courseJson
+                const courseData = course?.courseJson
                 return (
                   <motion.div
                     key={course.cid}
@@ -274,12 +274,12 @@ const CourseList = () => {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: index * 0.05, duration: 0.4 }}
                   >
-                    <Link href={`/dashboard/course/${course.cid}`} className="group block h-full">
+                    <Link href={`/dashboard/course/${course?.cid}`} className="group block h-full">
                       <Card className="group relative border-0 bg-white shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-400 overflow-hidden h-full rounded-2xl">
                         <div className="relative overflow-hidden">
                           <Image
                             src={course.bannerImage || '/default-course-banner.jpg'}
-                            alt={courseData.courseName}
+                            alt={courseData?.courseName}
                             width={500}
                             height={280}
                             className="w-full h-56 object-cover group-hover:scale-110 transition-transform duration-700"

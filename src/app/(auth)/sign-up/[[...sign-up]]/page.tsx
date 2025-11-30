@@ -1,4 +1,5 @@
 'use client'
+export const dynamic = 'force-dynamic'
 
 import { SignUp } from '@clerk/nextjs'
 import Image from 'next/image'

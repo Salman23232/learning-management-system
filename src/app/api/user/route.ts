@@ -1,9 +1,9 @@
 import { usersTable } from '@/db/schema'
 import { db } from '@/index'
 import { eq } from 'drizzle-orm'
-import { NextResponse } from 'next/server'
+import { NextRequest, NextResponse } from 'next/server'
 
-export async function POST(req) {
+export async function POST(req: NextRequest) {
   const { email, name } = await req.json()
 
   // Check if user already exists

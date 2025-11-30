@@ -29,7 +29,15 @@ export function UserCoursesProvider({ children }: { children: React.ReactNode })
     if (!user?.primaryEmailAddress?.emailAddress) return
     try {
       const data = await getAllUsersCourses(user.primaryEmailAddress.emailAddress)
-      setCourses(data)
+      const formatted: Course[] = data.map((c: any) => ({
+        bannerImage: c.bannerImage ?? '',
+        category: c.category ?? '',
+        cid: c.cid,
+        courseId: c.id?.toString() ?? null, // <- map backend id to courseId
+        courseJson: c.courseJson ?? {},
+        userEmail: c.userEmail ?? '',
+      }))
+      setCourses(formatted)
     } catch (err) {
       console.error('Failed to fetch courses:', err)
     }

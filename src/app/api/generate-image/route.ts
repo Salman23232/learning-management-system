@@ -14,7 +14,7 @@ export async function POST(req: NextRequest) {
     })
 
     return NextResponse.json(response.data)
-  } catch (err) {
+  } catch (err: any) {
     console.error('AI Guru Lab API Error:', err.response?.data || err.message)
     return NextResponse.json({ success: false, error: err.message }, { status: 500 })
   }

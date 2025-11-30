@@ -162,9 +162,9 @@ const LessonPageInner = () => {
                 </Badge>
               </div>
               <h1 className="text-2xl lg:text-3xl font-bold text-slate-900 tracking-tight">
-                {courseData.courseName}
+                {courseData?.courseName}
               </h1>
-              <p className="text-slate-500 max-w-2xl leading-relaxed">{courseData.description}</p>
+              <p className="text-slate-500 max-w-2xl leading-relaxed">{courseData?.description}</p>
             </div>
 
             <div className="flex flex-wrap gap-2">
@@ -312,7 +312,7 @@ const LessonPageInner = () => {
                 <ScrollArea className="h-[580px]">
                   <div className="p-3">
                     <Accordion type="multiple" defaultValue={[`chapter-${currentChapterIndex}`]}>
-                      {courseData.chapters.map((chapter, ci) => {
+                      {courseData?.chapters.map((chapter, ci) => {
                         const total = chapter.videoUrls.length
                         const watched = chapter.videoUrls.filter((_, li) =>
                           getLessonProgress(ci, li)

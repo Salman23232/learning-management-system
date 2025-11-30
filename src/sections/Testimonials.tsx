@@ -70,7 +70,17 @@ const testimonials = [
   },
 ]
 
-const Testimonial = ({ text, name, username, imageSrc }) => (
+const Testimonial = ({
+  text,
+  name,
+  username,
+  imageSrc,
+}: {
+  text: string
+  name: string
+  username: string
+  imageSrc: string
+}) => (
   <div className="card w-[380px]">
     <div>{text}</div>
 

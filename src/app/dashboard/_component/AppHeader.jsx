@@ -36,6 +36,7 @@ const AppHeader = () => {
           {/* User Button */}
           <div className="flex items-center gap-2 pl-2 border-l border-[#D2DCFF]">
             <UserButton
+              afterSignOutUrl="/"
               appearance={{
                 elements: {
                   avatarBox: 'w-10 h-10 rounded-xl',

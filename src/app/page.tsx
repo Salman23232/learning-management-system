@@ -1,3 +1,4 @@
+export const dynamic = 'force-dynamic'
 import CallToAction from '@/sections/CallToAction'
 import CEO from '@/sections/CEO'
 import Footer from '@/sections/Footer'

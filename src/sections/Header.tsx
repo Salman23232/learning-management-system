@@ -3,10 +3,10 @@ import React from 'react'
 import { ArrowRight, GraduationCap, MenuIcon } from 'lucide-react'
 import Logo from '@/components/Logo'
 import Link from 'next/link'
-import { useUser } from '@clerk/nextjs'
+import { UserButton, useUser } from '@clerk/nextjs'
 
 const Header = () => {
-  const { isSignedIn, user } = useUser()
+  const { isSignedIn } = useUser()
 
   return (
     <header className="sticky top-0 backdrop-blur-sm bg-[#EAEEFE]/80 z-20">
@@ -41,9 +41,21 @@ const Header = () => {
               </Link>
             </>
           ) : (
-            <Link href="/dashboard/overview">
-              <button className="btn btn-primary">Go to Dashboard</button>
-            </Link>
+            <>
+              <Link href="/dashboard/overview">
+                <button className="btn btn-primary">Go to Dashboard</button>
+              </Link>
+              <div className="flex items-center gap-2 pl-2 border-l border-[#D2DCFF]">
+                <UserButton
+                  afterSignOutUrl="/"
+                  appearance={{
+                    elements: {
+                      avatarBox: 'w-10 h-10 rounded-xl',
+                    },
+                  }}
+                />
+              </div>
+            </>
           )}
         </nav>
       </div>
