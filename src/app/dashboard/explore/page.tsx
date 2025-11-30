@@ -494,33 +494,9 @@ const ExplorePage = () => {
             opacity: { duration: 1 },
             y: { duration: 4, repeat: Infinity, ease: 'easeInOut' },
           }}
-          className="absolute left-0 -top-20 hidden md:block"
+          className="absolute left-92 -top-20 hidden md:block"
         >
           <Image src={cogImg} alt="cog" className="w-48 h-48 md:w-64 md:h-64" priority />
-        </motion.div>
-
-        <motion.div
-          initial={{ x: 60, opacity: 0 }}
-          animate={{ x: 0, opacity: 0.9, y: [0, -15, 0, -8, 0] }}
-          transition={{
-            opacity: { duration: 1 },
-            y: { duration: 4, repeat: Infinity, ease: 'easeInOut' },
-          }}
-          className="absolute -left-40 top-24 hidden md:block"
-        >
-          <Image src={cylinderImg} alt="cylinder" className="w-32 h-32 md:w-48 md:h-48" priority />
-        </motion.div>
-
-        <motion.div
-          initial={{ x: 60, opacity: 0 }}
-          animate={{ x: 0, opacity: 0.9, y: [0, -15, 0, -8, 0] }}
-          transition={{
-            opacity: { duration: 1 },
-            y: { duration: 4, repeat: Infinity, ease: 'easeInOut' },
-          }}
-          className="absolute -right-0 top-24 hidden md:block"
-        >
-          <Image src={PyramidImage} alt="pyramid" className="w-32 h-32 md:w-48 md:h-48" priority />
         </motion.div>
 
         {/* Main Content */}
