@@ -19,16 +19,6 @@ const AppHeader = () => {
         {/* Left Section */}
         <div className="flex items-center gap-4">
           <SidebarTrigger className="hover:bg-[#D2DCFF] rounded-lg transition-colors p-2" />
-
-          {/* Search Bar */}
-          <div className="hidden md:flex items-center gap-2 bg-[#EAEEFE] hover:bg-[#D2DCFF] transition-colors rounded-xl px-4 py-2 w-80 border border-[#D2DCFF]">
-            <Search className="w-4 h-4 text-[#010D3E]/60" />
-            <input
-              type="text"
-              placeholder="Search courses, topics..."
-              className="bg-transparent border-none outline-none text-sm text-[#010D3E] placeholder:text-[#010D3E]/50 w-full"
-            />
-          </div>
         </div>
 
         {/* Right Section */}
