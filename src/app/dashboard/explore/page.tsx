@@ -483,51 +483,50 @@ const ExplorePage = () => {
   }
 
   return (
-    <div className="min-h-screen relative bg-[radial-gradient(ellipse_200%_100%_at_bottom_left,_#183EC2,_#EAEEFE_100%)]">
-      {/* Decorative Background */}
-      <motion.div
-        initial={{ x: 60, opacity: 0 }}
-        animate={{
-          x: 0,
-          opacity: 0.9,
-          y: [0, -15, 0, -8, 0],
-        }}
-        transition={{
-          opacity: { duration: 1 },
-          y: { duration: 4, repeat: Infinity, ease: 'easeInOut' },
-        }}
-      >
-        <Image
-          src={cogImg}
-          alt="cog"
-          className="absolute left-0 -top-75 w-48 h-48 md:w-64 md:h-64"
-          priority
-        />
-      </motion.div>
-      <motion.div
-        initial={{ x: 60, opacity: 0 }}
-        animate={{
-          x: 0,
-          opacity: 0.9,
-          y: [0, -15, 0, -8, 0],
-        }}
-        transition={{
-          opacity: { duration: 1 },
-          y: { duration: 4, repeat: Infinity, ease: 'easeInOut' },
-        }}
-      >
-        <Image
-          src={cylinderImg}
-          alt="cylinder"
-          className="absolute -left-40 top-24 w-32 h-32 md:w-48 md:h-48"
-          priority
-        />
-      </motion.div>
+    <div className="flex flex-col min-h-screen bg-[radial-gradient(ellipse_200%_100%_at_bottom_left,_#183EC2,_#EAEEFE_100%)]">
+      {/* Scrollable Content */}
+      <div className="relative flex-1 overflow-auto">
+        {/* Decorative Background Motion Images */}
+        <motion.div
+          initial={{ x: 60, opacity: 0 }}
+          animate={{ x: 0, opacity: 0.9, y: [0, -15, 0, -8, 0] }}
+          transition={{
+            opacity: { duration: 1 },
+            y: { duration: 4, repeat: Infinity, ease: 'easeInOut' },
+          }}
+          className="absolute left-0 -top-20 hidden md:block"
+        >
+          <Image src={cogImg} alt="cog" className="w-48 h-48 md:w-64 md:h-64" priority />
+        </motion.div>
 
-      <div className="relative container mx-auto max-w-7xl px-4 py-8">
-        {/* Header */}
-        <div className="mb-8">
-          <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6">
+        <motion.div
+          initial={{ x: 60, opacity: 0 }}
+          animate={{ x: 0, opacity: 0.9, y: [0, -15, 0, -8, 0] }}
+          transition={{
+            opacity: { duration: 1 },
+            y: { duration: 4, repeat: Infinity, ease: 'easeInOut' },
+          }}
+          className="absolute -left-40 top-24 hidden md:block"
+        >
+          <Image src={cylinderImg} alt="cylinder" className="w-32 h-32 md:w-48 md:h-48" priority />
+        </motion.div>
+
+        <motion.div
+          initial={{ x: 60, opacity: 0 }}
+          animate={{ x: 0, opacity: 0.9, y: [0, -15, 0, -8, 0] }}
+          transition={{
+            opacity: { duration: 1 },
+            y: { duration: 4, repeat: Infinity, ease: 'easeInOut' },
+          }}
+          className="absolute -right-0 top-24 hidden md:block"
+        >
+          <Image src={PyramidImage} alt="pyramid" className="w-32 h-32 md:w-48 md:h-48" priority />
+        </motion.div>
+
+        {/* Main Content */}
+        <div className="relative container mx-auto max-w-7xl px-4 py-8">
+          {/* Header */}
+          <div className="mb-8 flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6">
             <div>
               <div className="flex items-center gap-3 mb-3">
                 <div className="p-2.5 bg-gradient-to-br from-sky-500 to-indigo-500 rounded-xl shadow-lg shadow-sky-500/25">
@@ -546,7 +545,7 @@ const ExplorePage = () => {
             </div>
 
             {/* Stats */}
-            <div className="flex gap-3">
+            <div className="flex gap-3 mt-4 lg:mt-0">
               <div className="flex items-center gap-2 px-5 py-3 bg-white rounded-2xl border border-slate-200 shadow-sm">
                 <div className="p-2 bg-sky-100 rounded-xl">
                   <BookOpen className="w-5 h-5 text-sky-600" />
@@ -567,123 +566,125 @@ const ExplorePage = () => {
               </div>
             </div>
           </div>
-        </div>
 
-        {/* Search & Filters */}
-        <div className="mb-8 space-y-4">
-          {/* Search Bar */}
-          <div className="flex flex-col sm:flex-row gap-4">
-            <div className="relative flex-1 max-w-xl">
-              <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400" />
-              <Input
-                type="text"
-                placeholder="Search courses..."
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                className="pl-12 pr-4 py-6 rounded-2xl border-slate-200 bg-white shadow-sm text-base focus:ring-2 focus:ring-sky-500 focus:border-transparent"
-              />
+          {/* Search & Filters */}
+          <div className="mb-8 space-y-4">
+            <div className="flex flex-col sm:flex-row gap-4">
+              {/* Search Bar */}
+              <div className="relative flex-1 max-w-xl">
+                <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400" />
+                <Input
+                  type="text"
+                  placeholder="Search courses..."
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  className="pl-12 pr-4 py-6 rounded-2xl border-slate-200 bg-white shadow-sm text-base focus:ring-2 focus:ring-sky-500 focus:border-transparent"
+                />
+              </div>
+
+              {/* View Mode Toggle */}
+              <div className="flex items-center gap-2 p-1.5 bg-white rounded-xl border border-slate-200 shadow-sm">
+                <Button
+                  variant={viewMode === 'grid' ? 'default' : 'ghost'}
+                  size="sm"
+                  onClick={() => setViewMode('grid')}
+                  className={cn(
+                    'rounded-lg',
+                    viewMode === 'grid' &&
+                      'bg-gradient-to-r from-sky-500 to-indigo-500 text-white shadow-md'
+                  )}
+                >
+                  <Grid3X3 className="w-4 h-4" />
+                </Button>
+                <Button
+                  variant={viewMode === 'list' ? 'default' : 'ghost'}
+                  size="sm"
+                  onClick={() => setViewMode('list')}
+                  className={cn(
+                    'rounded-lg',
+                    viewMode === 'list' &&
+                      'bg-gradient-to-r from-sky-500 to-indigo-500 text-white shadow-md'
+                  )}
+                >
+                  <LayoutList className="w-4 h-4" />
+                </Button>
+              </div>
             </div>
 
-            {/* View Mode Toggle */}
-            <div className="flex items-center gap-2 p-1.5 bg-white rounded-xl border border-slate-200 shadow-sm">
-              <Button
-                variant={viewMode === 'grid' ? 'default' : 'ghost'}
-                size="sm"
-                onClick={() => setViewMode('grid')}
-                className={cn(
-                  'rounded-lg',
-                  viewMode === 'grid' &&
-                    'bg-gradient-to-r from-sky-500 to-indigo-500 text-white shadow-md'
-                )}
-              >
-                <Grid3X3 className="w-4 h-4" />
-              </Button>
-              <Button
-                variant={viewMode === 'list' ? 'default' : 'ghost'}
-                size="sm"
-                onClick={() => setViewMode('list')}
-                className={cn(
-                  'rounded-lg',
-                  viewMode === 'list' &&
-                    'bg-gradient-to-r from-sky-500 to-indigo-500 text-white shadow-md'
-                )}
-              >
-                <LayoutList className="w-4 h-4" />
-              </Button>
+            {/* Category Tabs */}
+            <div className="flex flex-wrap gap-2">
+              {categories.map((cat) => (
+                <Button
+                  key={cat.id}
+                  variant={activeCategory === cat.id ? 'default' : 'outline'}
+                  onClick={() => setActiveCategory(cat.id)}
+                  className={cn(
+                    'rounded-xl transition-all duration-300',
+                    activeCategory === cat.id
+                      ? 'bg-gradient-to-r from-sky-500 to-indigo-500 text-white border-0 shadow-lg shadow-sky-500/25'
+                      : 'bg-white hover:bg-slate-50 border-slate-200'
+                  )}
+                >
+                  <cat.icon className="w-4 h-4 mr-2" />
+                  {cat.label}
+                </Button>
+              ))}
             </div>
           </div>
 
-          {/* Category Tabs */}
-          <div className="flex flex-wrap gap-2">
-            {categories.map((cat) => (
+          {/* Results Count */}
+          <div className="flex items-center justify-between mb-6">
+            <p className="text-sm text-slate-500">
+              Showing <span className="font-semibold text-slate-900">{filteredCourses.length}</span>{' '}
+              courses
+            </p>
+            {searchQuery && (
               <Button
-                key={cat.id}
-                variant={activeCategory === cat.id ? 'default' : 'outline'}
-                onClick={() => setActiveCategory(cat.id)}
-                className={cn(
-                  'rounded-xl transition-all duration-300',
-                  activeCategory === cat.id
-                    ? 'bg-gradient-to-r from-sky-500 to-indigo-500 text-white border-0 shadow-lg shadow-sky-500/25'
-                    : 'bg-white hover:bg-slate-50 border-slate-200'
-                )}
+                variant="ghost"
+                size="sm"
+                onClick={() => setSearchQuery('')}
+                className="text-slate-500 hover:text-slate-700"
               >
-                <cat.icon className="w-4 h-4 mr-2" />
-                {cat.label}
+                Clear search
               </Button>
+            )}
+          </div>
+
+          {/* No Results */}
+          {filteredCourses.length === 0 && (
+            <Card className="border-0 rounded-2xl shadow-lg mb-6">
+              <CardContent className="p-12 text-center">
+                <div className="w-16 h-16 mx-auto mb-4 bg-slate-100 rounded-2xl flex items-center justify-center">
+                  <Search className="w-8 h-8 text-slate-400" />
+                </div>
+                <h3 className="text-lg font-semibold text-slate-900 mb-2">No courses found</h3>
+                <p className="text-slate-500 mb-4">Try adjusting your search or filter criteria</p>
+                <Button
+                  variant="outline"
+                  onClick={() => {
+                    setSearchQuery('')
+                    setActiveCategory('all')
+                  }}
+                >
+                  Reset Filters
+                </Button>
+              </CardContent>
+            </Card>
+          )}
+
+          {/* Course Grid/List */}
+          <div
+            className={cn(
+              'gap-6 pb-8',
+              viewMode === 'grid'
+                ? 'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3'
+                : 'flex flex-col'
+            )}
+          >
+            {filteredCourses.map((course, index) => (
+              <CourseCard key={course.cid} course={course} index={index} viewMode={viewMode} />
             ))}
           </div>
-        </div>
-
-        {/* Results Count */}
-        <div className="flex items-center justify-between mb-6">
-          <p className="text-sm text-slate-500">
-            Showing <span className="font-semibold text-slate-900">{filteredCourses.length}</span>{' '}
-            courses
-          </p>
-          {searchQuery && (
-            <Button
-              variant="ghost"
-              size="sm"
-              onClick={() => setSearchQuery('')}
-              className="text-slate-500 hover:text-slate-700"
-            >
-              Clear search
-            </Button>
-          )}
-        </div>
-
-        {/* No Results */}
-        {filteredCourses.length === 0 && (
-          <Card className="border-0 rounded-2xl shadow-lg">
-            <CardContent className="p-12 text-center">
-              <div className="w-16 h-16 mx-auto mb-4 bg-slate-100 rounded-2xl flex items-center justify-center">
-                <Search className="w-8 h-8 text-slate-400" />
-              </div>
-              <h3 className="text-lg font-semibold text-slate-900 mb-2">No courses found</h3>
-              <p className="text-slate-500 mb-4">Try adjusting your search or filter criteria</p>
-              <Button
-                variant="outline"
-                onClick={() => {
-                  setSearchQuery('')
-                  setActiveCategory('all')
-                }}
-              >
-                Reset Filters
-              </Button>
-            </CardContent>
-          </Card>
-        )}
-
-        {/* Course Grid/List */}
-        <div
-          className={cn(
-            'gap-6 pb-8',
-            viewMode === 'grid' ? 'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3' : 'flex flex-col'
-          )}
-        >
-          {filteredCourses.map((course, index) => (
-            <CourseCard key={course.cid} course={course} index={index} viewMode={viewMode} />
-          ))}
         </div>
       </div>
     </div>

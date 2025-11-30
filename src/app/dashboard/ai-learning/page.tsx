@@ -14,11 +14,25 @@ export default function Page() {
   const [messages, setMessages] = useState<Array<{ type: 'user' | 'ai'; text: string }>>([])
 
   useEffect(() => {
-    document.body.style.margin = '0'
+    // Save original styles
+    const originalBodyOverflow = document.body.style.overflow
+    const originalHtmlOverflow = document.documentElement.style.overflow
+    const originalBodyHeight = document.body.style.height
+    const originalHtmlHeight = document.documentElement.style.height
+
+    // Apply the styles for this page
     document.body.style.overflow = 'hidden'
     document.documentElement.style.overflow = 'hidden'
     document.body.style.height = '100vh'
     document.documentElement.style.height = '100vh'
+
+    return () => {
+      // Restore original styles when leaving page
+      document.body.style.overflow = originalBodyOverflow
+      document.documentElement.style.overflow = originalHtmlOverflow
+      document.body.style.height = originalBodyHeight
+      document.documentElement.style.height = originalHtmlHeight
+    }
   }, [])
 
   const speakText = async (textToSpeak: string, lang: 'en' | 'bn' = 'en') => {
@@ -143,7 +157,7 @@ export default function Page() {
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.2 }}
-        className="fixed bottom-8 left-[62rem] -translate-x-1/2 w-[90%] max-w-4xl z-20"
+        className="fixed bottom-8 left-[52rem] -translate-x-1/2 w-[90%] max-w-4xl z-20"
       >
         <div className="relative">
           {/* Glow Effect */}

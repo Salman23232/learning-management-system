@@ -104,7 +104,7 @@ const CourseList = () => {
                 <Image
                   src={cogImg}
                   alt="cog"
-                  className="absolute left-[50rem] -top-75 w-48 h-48 md:w-64 md:h-64"
+                  className="absolute left-[40rem] -top-75 w-48 h-48 md:w-64 md:h-64"
                   priority
                 />
               </motion.div>

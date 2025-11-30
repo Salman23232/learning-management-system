@@ -247,7 +247,7 @@ export default function CodePractice() {
 
   // Main Problem View
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-gray-50">
+    <div className="flex flex-col min-h-screen bg-gradient-to-br from-gray-50 via-white to-gray-50">
       <div className="max-w-[1800px] mx-auto px-6 py-8">
         {/* Timer and Actions Bar */}
         <div className="flex items-center justify-between mb-6">
