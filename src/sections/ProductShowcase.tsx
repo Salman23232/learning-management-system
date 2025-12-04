@@ -37,7 +37,7 @@ const ProductShowcase = () => {
             }}
             src={pyramidImage.src}
             alt="Pyramid Image"
-            className="hidden md:block absolute -right-36 -top-32"
+            className="hidden md:block absolute -right-10 -top-32"
             height={262}
             width={262}
           />
